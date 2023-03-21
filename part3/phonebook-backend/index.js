@@ -29,18 +29,19 @@ app.get('/api/persons/:id', (request, response, next) => {
         response.status(404).end()
       }
     })
-    .catch(error => {
-        next(error)
+    // .catch(error => {
+    //     next(error)
     //   console.log(error)
     //   response.status(400).send({ error: 'malformatted id' })
-    })
+    // })
 })
 
 app.get('/info', (request, response) => {
     const date = new Date()
-    const result = persons.length
-    const info = `Phonebook has info for ${result} people <br><br> ${date}`
-    response.send(info)
+    Person.countDocuments({}).then(result => {
+      const info = `Phonebook has info for ${result} people <br><br> ${date}`
+      response.send(info)
+    })
 })
 
 app.delete('/api/persons/:id', (request, response) => {
