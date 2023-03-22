@@ -12,11 +12,15 @@ const personNumber = process.argv[4]
 const url =
   `mongodb+srv://fullstack:${password}@cluster0.6g93c7v.mongodb.net/?retryWrites=true&w=majority`
 
-mongoose.set('strictQuery',false)
+// mongoose.set('strictQuery',false)
 mongoose.connect(url)
 
 const personSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        required: true,
+        minLength: 3
+    },
     number: String,
 })
 

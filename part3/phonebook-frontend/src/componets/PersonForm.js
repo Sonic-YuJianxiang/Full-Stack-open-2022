@@ -20,7 +20,7 @@ const PersonForm = ({
           id: persons.length + 1
         }
         // console.log(persons.filter(person=>person.name === newName))
-        if (persons.find(person=>person.name === newName)) {
+        if (persons.find(person => person.name === newName)) {
             const personAlreadyAdded = persons.filter(person=>person.name === newName)
             const answer = window.confirm( newName + ' is already added to phonebook, shall we replace the old number')
             if (answer) {
@@ -43,7 +43,11 @@ const PersonForm = ({
           setNewNum('')
         })
         .catch(error => {
-            console.log(error)
+            setDisplayMessage(error.response.data.error)
+            setMessageStyle(false)
+            setTimeout(() => {
+                setDisplayMessage(null)
+            }, 3500)
         })
     }
 
@@ -56,7 +60,11 @@ const PersonForm = ({
             ))
         })
         .catch(error => {
-            console.log(error)
+            setDisplayMessage(error.response.data.error)
+            setMessageStyle(false)
+            setTimeout(() => {
+                setDisplayMessage(null)
+            }, 3500)
         })
     }
     

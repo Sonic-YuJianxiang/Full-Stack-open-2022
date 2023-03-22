@@ -5,7 +5,7 @@ const Notification = ({ message, style }) => {
     let className = style ? 'green' : 'red'
     return (
         <div className={className}>
-        {message}
+            {message}
         </div>
     )
 };
