@@ -60,7 +60,7 @@ const mostLikes = (blogs) => {
             .reduce((prev, current) => (prev.likes > current.likes) ? prev : current)
 
         return mostLikesAuthor
-}
+    }
 }
 
 module.exports = {
