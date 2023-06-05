@@ -1,0 +1,21 @@
+.green {
+    color: green;
+    background: lightgrey;
+    font-size: 15px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: green;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+.red {
+    color: red;
+    background: lightgrey;
+    font-size: 15px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: red;
+    padding: 10px;
+    margin-bottom: 10px;
+}
