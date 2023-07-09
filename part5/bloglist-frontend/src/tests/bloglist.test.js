@@ -6,30 +6,32 @@ import Blog from '../components/Blog'
 import AddBlog from '../components/AddBlog'
 
 const currentUser = {
-  username: 'mock',
-  name: 'Mock'
+  username: 'yjx',
+  name: 'YJX'
 }
+
 const blog = {
-  title: 'mock title',
-  author: 'mock author',
-  url: 'mock url',
+  title: 'yjx title',
+  author: 'yjx author',
+  url: 'yjx url',
   user: {
-    username: 'mock',
-    name: 'Mock'
+    username: 'yjx',
+    name: 'YJX'
   }
 }
 
-describe('blog component test', () => {
-  test('renders content', async () => {
+describe('component test for blog module', () => {
+  test('render content', async () => {
 
     const { container } = render(<Blog blog={blog} currentUser={currentUser}/>)
-    const element = screen.getByText('mock title by mock author')
+    const element = screen.getByText('yjx title by yjx author')
     expect(element).toBeDefined()
     const blogUrl = container.querySelector('#blogUrl')
     expect(blogUrl).not.toBeVisible()
     const blogLikes = container.querySelector('#blogLikes')
     expect(blogLikes).not.toBeVisible()
   }),
+
   test('render required content after click', () => {
 
     const { container } = render(<Blog blog={blog} currentUser={currentUser}/>)
@@ -44,6 +46,7 @@ describe('blog component test', () => {
     const blogLikes = container.querySelector('#blogLikes')
     expect(blogLikes).toBeVisible()
   }),
+
   test('event handler is called twice after two clicks', () => {
 
     const mockHandler = jest.fn()
@@ -59,20 +62,21 @@ describe('blog component test', () => {
 
     expect(mockHandler.mock.calls).toHaveLength(2)
   }),
-  test('the blog form receives the right details when a new blog is created', () => {
+
+  test('get the right details when a new blog is created', () => {
     const mockHandler = jest.fn()
 
     render(<AddBlog blogAdd={mockHandler}/>)
 
     const input = screen.getAllByRole('textbox')
-    userEvent.type(input[0], 'mock title')
-    userEvent.type(input[1], 'mock author')
-    userEvent.type(input[2], 'mock url')
+    userEvent.type(input[0], 'yjx title')
+    userEvent.type(input[1], 'yjx author')
+    userEvent.type(input[2], 'yjx url')
     const addButton = screen.getByText('create')
     userEvent.click(addButton)
     expect(mockHandler.mock.calls).toHaveLength(1)
-    expect(mockHandler.mock.calls[0][0].title).toBe('mock title')
-    expect(mockHandler.mock.calls[0][0].author).toBe('mock author')
-    expect(mockHandler.mock.calls[0][0].url).toBe('mock url')
+    expect(mockHandler.mock.calls[0][0].title).toBe('yjx title')
+    expect(mockHandler.mock.calls[0][0].author).toBe('yjx author')
+    expect(mockHandler.mock.calls[0][0].url).toBe('yjx url')
   })
 })
